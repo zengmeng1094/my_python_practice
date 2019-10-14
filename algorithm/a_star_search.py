@@ -25,7 +25,12 @@ def print_format(array_list, path):
     for i_index, i in enumerate(array_list):
         for j_index, j in enumerate(i):
             if contain_grid(path, i_index, j_index):
-                print('*', end=' ')
+                if i_index == path[0].x and j_index == path[0].y:
+                    print('E', end=' ')
+                elif i_index == path[len(path)-1].x and j_index == path[len(path)-1].y:
+                    print('S', end=' ')
+                else:
+                    print('*', end=' ')
             else:
                 print(j, end=' ')
         print()
