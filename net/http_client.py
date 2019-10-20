@@ -9,15 +9,15 @@ class HttpsClient:
         pass
 
     @staticmethod
-    def get(_url, _json={}, _header=None):
+    def get(_url, _query_string={}, _header=None):
         urllib3.disable_warnings()
-        _resp = requests.get(_url, _json, headers=_header, verify=False)
+        _resp = requests.get(_url, _query_string, headers=_header, verify=False)
         return _resp.text
 
     @staticmethod
-    def post(_url, _json={}, _header=None):
+    def post(_url, _body={}, _header=None):
         urllib3.disable_warnings()
-        _resp = requests.post(_url, _json, headers=_header, verify=False)
+        _resp = requests.post(_url, _body, headers=_header, verify=False)
         return _resp.text
 
 
