@@ -40,9 +40,9 @@ def generate_team_csv(file_path):
         # read source data from csv file
         data = pd.read_csv(file_path)
         data_map = {}
-        for _, row in data.iterrows():
-            index, email = row['id'], row['email']
-            data_map[index] = email
+        for index, (_, row) in enumerate(data.iterrows()):
+            _, email = row['id'], row['email']
+            data_map[index + 1] = email
         print(data_map)
         # generate random order
         team_map = random_group(len(data))
@@ -59,9 +59,9 @@ def generate_team_csv(file_path):
         # output to csv file
         dataframe = pd.DataFrame({'team_number': team_id_list, 'team_member': team_member_list})
         dataframe.to_csv("test.csv", index=False, sep=',')
-    except Exception:
-        print('error')
+    except Exception as e:
+        print('error', e)
 
 
 if __name__ == '__main__':
-    generate_team_csv('mock-data.csv')
+    generate_team_csv('test_data2.csv')
